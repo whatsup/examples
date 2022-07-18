@@ -48,7 +48,11 @@ module.exports = {
             },
             {
                 test: /\.(css|scss|sass)$/i,
-                use: ['style-loader', '@whatsup/webpack-loader-css-components'],
+                use: [
+                    'style-loader',
+                    '@whatsup/webpack-loader-css-components',
+                    'sass-loader',
+                ],
             },
         ],
     },
