@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve('./dist'),
         filename: 'bundle.js',
         chunkFilename: 'chunk.[chunkhash].js',
-        publicPath: '/',
+        publicPath: '/examples/',
     },
 
     devtool: isDev ? 'inline-source-map' : 'source-map',
