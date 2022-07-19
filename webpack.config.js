@@ -2,9 +2,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const {
-    getCssLoaderOptions,
-} = require('@whatsup/babel-plugin-transform-cssx/compat')
+const { getCssLoaderOptions } = require('@whatsup/babel-plugin-transform-cssx/compat')
 
 const common = {
     entry: './src/bundle.tsx',
@@ -12,7 +10,7 @@ const common = {
         path: path.resolve('./dist'),
         filename: 'bundle.js',
         chunkFilename: 'chunk.[chunkhash].js',
-        publicPath: '/examples/',
+        publicPath: '/',
     },
     resolve: {
         modules: [path.resolve('./src'), path.resolve('node_modules')],
@@ -72,6 +70,9 @@ const development = {
 }
 
 const production = {
+    output: {
+        publicPath: '/examples/',
+    },
     devtool: 'source-map',
     plugins: [new MiniCssExtractPlugin()],
     module: {
