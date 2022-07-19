@@ -5,7 +5,7 @@ import { Footer } from './footer'
 import { FILTER } from './keys'
 import { Store, TodoModel } from './store'
 import { Todo } from './todo'
-import { Main, Section, Header, Ul, Input } from './todos.scss'
+import { Div, Input } from './todos.scss'
 
 class CreateEvent extends Event {
     constructor(readonly name: string) {
@@ -38,20 +38,20 @@ export function* Todos(this: Context) {
 
     while (true) {
         yield (
-            <Section container>
-                <Section wrapper>
-                    <Header header>todos</Header>
-                    <Main main>
+            <Div container>
+                <Div wrapper>
+                    <Div header>todos</Div>
+                    <Div main>
                         <NewTodoNameInput />
-                        <Ul list>
+                        <Div list>
                             {filtered().map((todo) => (
                                 <Todo id={todo.id} key={todo.id} />
                             ))}
-                        </Ul>
-                    </Main>
+                        </Div>
+                    </Div>
                     <Footer />
-                </Section>
-            </Section>
+                </Div>
+            </Div>
         )
     }
 }

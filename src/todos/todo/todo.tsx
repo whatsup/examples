@@ -1,7 +1,7 @@
 import { observable } from 'whatsup'
 import { Context, createRef, Event } from 'whatsup/jsx'
 import { Store, TodoModel } from '../store'
-import { Li, Span, Button, Input } from './todo.scss'
+import { Div, Button, Input } from './todo.scss'
 import { ENTER_KEY, ESCAPE_KEY } from '../constants'
 import CheckboxOnIcon from './icons/checkbox-on.svg'
 import CheckboxOffIcon from './icons/checkbox-off.svg'
@@ -23,6 +23,7 @@ export function* Todo(this: Context, props: TodoProps) {
     const store = this.find(Store)
     const todo = store.get(id)!
     const edit = observable(false)
+
     const handleDoneToggle = () => (todo.done = !todo.done)
     const handleEdit = () => edit(true)
     const handleRemove = () => store.remove(id)
@@ -35,29 +36,30 @@ export function* Todo(this: Context, props: TodoProps) {
         const { name, done } = todo
 
         yield (
-            <Li container key={id}>
+            <Div container key={id}>
                 <Button status done={done} onClick={handleDoneToggle}>
                     <img src={done ? CheckboxOnIcon : CheckboxOffIcon} />
                 </Button>
                 {edit() ? (
                     <NameEditor />
                 ) : (
-                    <Span todoName done={done} onDblClick={handleEdit}>
+                    <Div todoName done={done} onDblClick={handleEdit}>
                         {name}
-                    </Span>
+                    </Div>
                 )}
                 <Button remove onClick={handleRemove}>
                     <img src={RemoveIcon} />
                 </Button>
-            </Li>
+            </Div>
         )
     }
 }
 
 function* NameEditor(this: Context) {
+    const ref = createRef()
     const todo = this.find(TodoModel)
     const value = observable(todo.name)
-    const ref = createRef()
+
     const outsideClickHandler = (e: any) => {
         if (!ref.current.contains(e.target)) {
             this.dispatch(new NeedDisableEditEvent())

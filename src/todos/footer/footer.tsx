@@ -2,7 +2,7 @@ import { Context } from 'whatsup/jsx'
 import { Store } from '../store'
 import { Filter } from '../constants'
 import { FILTER } from '../keys'
-import { Div, Span, A, Ul, Li } from './footer.scss'
+import { Div } from './footer.scss'
 
 export function* Footer(this: Context) {
     const store = this.find(Store)
@@ -15,39 +15,39 @@ export function* Footer(this: Context) {
         yield (
             <Div container>
                 <Div flex>
-                    <Span left visible={!!activeCount}>
+                    <Div activeCount visible={!!activeCount}>
                         {activeCount} items left
-                    </Span>
-                    <Ul filters>
-                        <Li
+                    </Div>
+                    <Div filters>
+                        <Div
                             filter
                             active={filter() === Filter.All}
                             onClick={() => filter(Filter.All)}
                         >
                             All
-                        </Li>
-                        <Li
+                        </Div>
+                        <Div
                             filter
                             active={filter() === Filter.Active}
                             onClick={() => filter(Filter.Active)}
                         >
                             Active
-                        </Li>
-                        <Li
+                        </Div>
+                        <Div
                             filter
                             active={filter() === Filter.Completed}
                             onClick={() => filter(Filter.Completed)}
                         >
                             Completed
-                        </Li>
-                    </Ul>
-                    <A
+                        </Div>
+                    </Div>
+                    <Div
                         clear
                         onClick={handleClearCompleted}
                         visible={hasCompleted}
                     >
                         Clear completed
-                    </A>
+                    </Div>
                 </Div>
                 <Div help>Double click to edit a todo</Div>
             </Div>
