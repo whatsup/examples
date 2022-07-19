@@ -12,7 +12,7 @@ const common = {
         path: path.resolve('./dist'),
         filename: 'bundle.js',
         chunkFilename: 'chunk.[chunkhash].js',
-        publicPath: '/',
+        publicPath: '/examples/',
     },
     resolve: {
         modules: [path.resolve('./src'), path.resolve('node_modules')],
