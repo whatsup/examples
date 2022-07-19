@@ -1,4 +1,5 @@
-import './types'
+/// <reference path="./@types/index.d.ts" />
+
 import './reset.css'
 //import { Route } from 'whatsup/route'
 import { render } from 'whatsup/jsx'
