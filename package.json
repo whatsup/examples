@@ -2,9 +2,11 @@
     "name": "examples",
     "version": "1.0.0",
     "license": "MIT",
+    "homepage": "https://examples.whatsup.js.org",
     "scripts": {
         "start": "cross-env ENV=development webpack serve --mode development",
         "build": "cross-env ENV=production webpack --mode production",
+        "postbuild": "cname ./dist",
         "deploy": "gh-pages -d ./dist",
         "predeploy": "npm run build",
         "postdeploy": "rimraf ./dist"
@@ -24,6 +26,7 @@
         "@whatsup/babel-plugin-transform-jsx": "2.2.19",
         "@whatsup/typescript-plugin-cssx": "2.2.27",
         "babel-loader": "^8.2.5",
+        "cname": "^0.1.1",
         "core-js": "^3.23.4",
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.1",
