@@ -1,15 +1,15 @@
 import './types'
 import './reset.css'
-import { Route } from 'whatsup/route'
+//import { Route } from 'whatsup/route'
 import { render } from 'whatsup/jsx'
 import { Todos } from 'todos'
 
-function App() {
-    return (
-        <>
-            <Route path="/todos" component={Todos} />
-        </>
-    )
-}
+// function App() {
+//     return (
+//         <>
+//             <Route path="/todos" component={Todos} />
+//         </>
+//     )
+// }
 
-render(<App />)
+render(<Todos />)
