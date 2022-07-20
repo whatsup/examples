@@ -6,7 +6,7 @@
     "scripts": {
         "start": "cross-env ENV=development webpack serve --mode development",
         "build": "cross-env ENV=production webpack --mode production",
-        "postbuild": "cname ./dist",
+        "postbuild": "cname ./dist && cpy ./dist/index.html --rename=./404.html ./",
         "deploy": "gh-pages -d ./dist",
         "predeploy": "npm run build",
         "postdeploy": "rimraf ./dist"
@@ -28,6 +28,7 @@
         "babel-loader": "^8.2.5",
         "cname": "^0.1.1",
         "core-js": "^3.23.4",
+        "cpy-cli": "^4.1.0",
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.1",
         "gh-pages": "^4.0.0",
