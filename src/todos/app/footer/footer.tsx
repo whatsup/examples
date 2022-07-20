@@ -1,7 +1,7 @@
 import { Context } from 'whatsup/jsx'
-import { Store } from '../store'
-import { Filter } from '../constants'
-import { FILTER } from '../keys'
+import { Store } from 'todos/store'
+import { Filter } from 'todos/constants'
+import { FILTER } from 'todos/keys'
 import { Div } from './footer.scss'
 
 export function* Footer(this: Context) {
@@ -19,33 +19,17 @@ export function* Footer(this: Context) {
                         {activeCount} items left
                     </Div>
                     <Div filters>
-                        <Div
-                            filter
-                            active={filter() === Filter.All}
-                            onClick={() => filter(Filter.All)}
-                        >
+                        <Div filter active={filter() === Filter.All} onClick={() => filter(Filter.All)}>
                             All
                         </Div>
-                        <Div
-                            filter
-                            active={filter() === Filter.Active}
-                            onClick={() => filter(Filter.Active)}
-                        >
+                        <Div filter active={filter() === Filter.Active} onClick={() => filter(Filter.Active)}>
                             Active
                         </Div>
-                        <Div
-                            filter
-                            active={filter() === Filter.Completed}
-                            onClick={() => filter(Filter.Completed)}
-                        >
+                        <Div filter active={filter() === Filter.Completed} onClick={() => filter(Filter.Completed)}>
                             Completed
                         </Div>
                     </Div>
-                    <Div
-                        clear
-                        onClick={handleClearCompleted}
-                        visible={hasCompleted}
-                    >
+                    <Div clear onClick={handleClearCompleted} visible={hasCompleted}>
                         Clear completed
                     </Div>
                 </Div>

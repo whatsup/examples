@@ -3,7 +3,7 @@
 import './reset.css'
 //import { Route } from 'whatsup/route'
 import { render } from 'whatsup/jsx'
-import { Todos } from 'todos'
+import { App as Todos } from 'todos/app'
 
 // function App() {
 //     return (

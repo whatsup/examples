@@ -1,11 +1,11 @@
 import { action, computed, observable } from 'whatsup'
 import { Context, createRef, Event } from 'whatsup/jsx'
-import { Filter, ENTER_KEY, ESCAPE_KEY } from './constants'
+import { Filter, ENTER_KEY, ESCAPE_KEY } from 'todos/constants'
 import { Footer } from './footer'
-import { FILTER } from './keys'
-import { Store, TodoModel } from './store'
+import { FILTER } from 'todos/keys'
+import { Store, TodoModel } from 'todos/store'
 import { Todo } from './todo'
-import { Div, Input } from './todos.scss'
+import { Div, Input } from './app.scss'
 
 class CreateEvent extends Event {
     constructor(readonly name: string) {
@@ -13,7 +13,7 @@ class CreateEvent extends Event {
     }
 }
 
-export function* Todos(this: Context) {
+export function* App(this: Context) {
     const store = new Store()
     const filter = observable(Filter.All)
     const filtered = computed(() => {
