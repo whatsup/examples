@@ -70,9 +70,6 @@ const development = {
 }
 
 const production = {
-    output: {
-        publicPath: '/examples/',
-    },
     devtool: 'source-map',
     plugins: [new MiniCssExtractPlugin()],
     module: {
