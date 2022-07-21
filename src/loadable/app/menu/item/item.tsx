@@ -3,6 +3,9 @@ import { Loader } from 'loadable/loader'
 import { Api } from 'loadable/api'
 import { Icons } from './icons'
 import { Context } from '@whatsup/jsx'
+import { cssx } from 'whatsup/cssx'
+
+const CSSXLoader = cssx(Loader, styles)
 
 interface ItemProps {
     id: number
@@ -43,5 +46,5 @@ export function ItemLoader() {
 }
 
 function IconLoader() {
-    return <Loader w={26} h={26} r="50%" className={styles.iconLoader} />
+    return <CSSXLoader iconLoader w={26} h={26} r="50%" />
 }

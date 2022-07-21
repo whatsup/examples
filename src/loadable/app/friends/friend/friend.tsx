@@ -2,6 +2,9 @@ import { Context } from 'whatsup/jsx'
 import styles, { Div, Img } from './friend.scss'
 import { Loader } from 'loadable/loader'
 import { Api } from 'loadable/api'
+import { cssx } from 'whatsup/cssx'
+
+const CSSXLoader = cssx(Loader, styles)
 
 interface FriendProps {
     id: number
@@ -41,5 +44,5 @@ export function FriendLoader() {
 }
 
 function FriendAvatarLoader() {
-    return <Loader r="50%" w="auto" h="auto" className={styles.avatarLoader} />
+    return <CSSXLoader avatarLoader r="50%" w="auto" h="auto" />
 }

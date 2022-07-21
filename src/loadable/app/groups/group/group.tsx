@@ -2,6 +2,9 @@ import styles, { Div, Img } from './group.scss'
 import { Loader } from 'loadable/loader'
 import { Api } from 'loadable/api'
 import { Context } from '@whatsup/jsx'
+import { cssx } from 'whatsup/cssx'
+
+const CSSXLoader = cssx(Loader, styles)
 
 interface GroupProps {
     id: number
@@ -37,5 +40,5 @@ export function GroupLoader() {
 }
 
 function GroupImgLoader() {
-    return <Loader className={styles.imgLoader} w="auto" h="auto" />
+    return <CSSXLoader imgLoader w="auto" h="auto" />
 }

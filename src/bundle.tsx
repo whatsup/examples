@@ -2,10 +2,13 @@
 
 import styles, { Div } from './bundle.scss'
 import { Route, RouteLink } from 'whatsup/route'
+import { cssx } from 'whatsup/cssx'
 import { render } from 'whatsup/jsx'
 import { App as Todos } from './todos'
 import { App as Sierpinski } from './sierpinski'
 import { App as Loadable } from './loadable'
+
+const CSSXRouteLink = cssx(RouteLink, styles)
 
 function App() {
     return (
@@ -16,15 +19,15 @@ function App() {
             <Div default>
                 <Div header>Whatsup examples</Div>
                 <Div flex>
-                    <RouteLink className={styles.button + ' ' + styles.blue} to="/todos">
+                    <CSSXRouteLink button blue to="/todos">
                         Todos
-                    </RouteLink>
-                    <RouteLink className={styles.button + ' ' + styles.orange} to="/loadable">
+                    </CSSXRouteLink>
+                    <CSSXRouteLink button orange to="/loadable">
                         Loadable
-                    </RouteLink>
-                    <RouteLink className={styles.button + ' ' + styles.green} to="/sierpinski">
+                    </CSSXRouteLink>
+                    <CSSXRouteLink button green to="/sierpinski">
                         Sierpinski
-                    </RouteLink>
+                    </CSSXRouteLink>
                 </Div>
             </Div>
         </Div>
