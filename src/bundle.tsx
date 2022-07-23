@@ -8,26 +8,26 @@ import { App as Todos } from './todos'
 import { App as Sierpinski } from './sierpinski'
 import { App as Loadable } from './loadable'
 
-const CSSXRouteLink = cssx(RouteLink, styles)
+const RouteLinkX = cssx(RouteLink, styles)
 
 function App() {
     return (
-        <Div container>
+        <Div>
             <Route path="/todos" component={Todos} />
             <Route path="/sierpinski" component={Sierpinski} />
             <Route path="/loadable" component={Loadable} />
-            <Div default>
-                <Div header>Whatsup examples</Div>
-                <Div flex>
-                    <CSSXRouteLink button blue to="/todos">
+            <Div css:default>
+                <Div css:header>Whatsup examples</Div>
+                <Div css:flex>
+                    <RouteLinkX css:button css:blue to="/todos">
                         Todos
-                    </CSSXRouteLink>
-                    <CSSXRouteLink button orange to="/loadable">
+                    </RouteLinkX>
+                    <RouteLinkX css:button css:orange to="/loadable">
                         Loadable
-                    </CSSXRouteLink>
-                    <CSSXRouteLink button green to="/sierpinski">
+                    </RouteLinkX>
+                    <RouteLinkX css:button css:green to="/sierpinski">
                         Sierpinski
-                    </CSSXRouteLink>
+                    </RouteLinkX>
                 </Div>
             </Div>
         </Div>

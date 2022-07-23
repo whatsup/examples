@@ -38,12 +38,12 @@ export function* App(this: Context) {
 
     while (true) {
         yield (
-            <Div container>
-                <Div wrapper>
-                    <Div header>todos</Div>
-                    <Div main>
+            <Div css:container>
+                <Div css:wrapper>
+                    <Div css:header>todos</Div>
+                    <Div css:main>
                         <NewTodoNameInput />
-                        <Div list>
+                        <Div css:list>
                             {filtered().map((todo) => (
                                 <Todo id={todo.id} key={todo.id} />
                             ))}
@@ -76,7 +76,7 @@ function* NewTodoNameInput(this: Context) {
     while (true) {
         yield (
             <Input
-                newTodoNameInput
+                css:newTodoNameInput
                 ref={ref}
                 value={value()}
                 placeholder="What needs to be done?"

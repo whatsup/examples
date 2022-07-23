@@ -5,7 +5,7 @@ import { Icons } from './icons'
 import { Context } from '@whatsup/jsx'
 import { cssx } from 'whatsup/cssx'
 
-const CSSXLoader = cssx(Loader, styles)
+const LoaderX = cssx(Loader, styles)
 
 interface ItemProps {
     id: number
@@ -22,11 +22,11 @@ export function* Item(this: Context, props: ItemProps) {
 
     while (true) {
         yield (
-            <Div container key={id}>
-                <Div icon>
+            <Div css:container key={id}>
+                <Div css:icon>
                     <Icon />
                 </Div>
-                <Div name>{name!}</Div>
+                <Div css:name>{name!}</Div>
             </Div>
         )
     }
@@ -34,11 +34,11 @@ export function* Item(this: Context, props: ItemProps) {
 
 export function ItemLoader() {
     return (
-        <Div container>
-            <Div icon>
+        <Div css:container>
+            <Div css:icon>
                 <IconLoader />
             </Div>
-            <Div name>
+            <Div css:name>
                 <Loader h={16} w="50%" />
             </Div>
         </Div>
@@ -46,5 +46,5 @@ export function ItemLoader() {
 }
 
 function IconLoader() {
-    return <CSSXLoader iconLoader w={26} h={26} r="50%" />
+    return <LoaderX css:iconLoader w={26} h={26} r="50%" />
 }

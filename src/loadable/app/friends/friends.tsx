@@ -11,8 +11,8 @@ export function* Friends(this: Context) {
 
     while (true) {
         yield (
-            <Div container>
-                <Div header>My friends</Div>
+            <Div css:container>
+                <Div css:header>My friends</Div>
                 {ids.value!.map((id) => (
                     <Friend id={id} key={id} />
                 ))}
@@ -23,8 +23,8 @@ export function* Friends(this: Context) {
 
 function FriendsLoader() {
     return (
-        <Div container>
-            <Div header>
+        <Div css:container>
+            <Div css:header>
                 <Loader h={26} />
             </Div>
             <FriendLoader />

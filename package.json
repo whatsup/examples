@@ -12,7 +12,7 @@
         "postdeploy": "rimraf ./dist"
     },
     "dependencies": {
-        "whatsup": "2.2.33"
+        "whatsup": "2.2.34"
     },
     "devDependencies": {
         "@babel/cli": "^7.18.6",
@@ -23,8 +23,8 @@
         "@babel/preset-env": "^7.18.6",
         "@babel/preset-typescript": "^7.18.6",
         "@whatsup/babel-plugin-transform-cssx": "^2.2.33",
-        "@whatsup/babel-plugin-transform-jsx": "^2.2.33",
-        "@whatsup/typescript-plugin-cssx": "^2.2.30",
+        "@whatsup/babel-plugin-transform-jsx": "^2.2.34",
+        "@whatsup/typescript-plugin-cssx": "^2.2.34",
         "babel-loader": "^8.2.5",
         "cname": "^0.1.1",
         "core-js": "^3.23.4",

@@ -51,7 +51,7 @@ function* Dot(this: Context) {
         const text = hovered() ? `*${timer()}*` : timer()
 
         yield (
-            <Div dot hovered={hovered()} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+            <Div css:dot css:hovered={hovered()} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
                 {text}
             </Div>
         )
@@ -66,7 +66,7 @@ function Triangle(props: TriangleProps) {
     const { depth } = props
 
     return (
-        <Div triangle>
+        <Div css:triangle>
             <Layer depth={depth} />
             <Layer depth={depth} />
             <Layer depth={depth} />
@@ -90,7 +90,7 @@ export function* App(this: Context) {
         const transform = `scaleX(${scaler()})`
 
         yield (
-            <Div container style={{ transform }}>
+            <Div css:container style={{ transform }}>
                 <Triangle depth={5} />
             </Div>
         )

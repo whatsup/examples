@@ -13,7 +13,7 @@ export function Loader(props: LoaderProps) {
     const height = numToPx(h)
     const borderRadius = numToPx(r)
 
-    return <Div container className={className} style={{ width, height, borderRadius }} {...other} />
+    return <Div css:container className={className} style={{ width, height, borderRadius }} {...other} />
 }
 
 function numToPx(prop: number | string) {

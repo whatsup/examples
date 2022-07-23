@@ -10,7 +10,7 @@ export function* Menu(this: Context) {
 
     while (true) {
         yield (
-            <Div container>
+            <Div css:container>
                 {ids.value!.map((id) => (
                     <Item id={id} key={id} />
                 ))}
@@ -21,7 +21,7 @@ export function* Menu(this: Context) {
 
 function MenuLoader() {
     return (
-        <Div container>
+        <Div css:container>
             <ItemLoader />
             <ItemLoader />
             <ItemLoader />

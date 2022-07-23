@@ -5,10 +5,10 @@ import { Menu } from './menu'
 
 export function App() {
     return (
-        <Div container>
-            <Div logo>Loadable</Div>
+        <Div css:container>
+            <Div css:logo>Loadable</Div>
             <Menu />
-            <Div header>Fractal sets</Div>
+            <Div css:header>Fractal sets</Div>
             <Groups />
             <Friends />
         </Div>

@@ -4,7 +4,7 @@ import { Api } from 'loadable/api'
 import { Context } from '@whatsup/jsx'
 import { cssx } from 'whatsup/cssx'
 
-const CSSXLoader = cssx(Loader, styles)
+const LoaderX = cssx(Loader, styles)
 
 interface GroupProps {
     id: number
@@ -20,9 +20,9 @@ export function* Group(this: Context, props: GroupProps) {
 
     while (true) {
         yield (
-            <Div container>
-                <Img img src={image} />
-                <Div name>{name}</Div>
+            <Div css:container>
+                <Img css:img src={image} />
+                <Div css:name>{name}</Div>
             </Div>
         )
     }
@@ -30,9 +30,9 @@ export function* Group(this: Context, props: GroupProps) {
 
 export function GroupLoader() {
     return (
-        <Div container>
+        <Div css:container>
             <GroupImgLoader />
-            <Div name>
+            <Div css:name>
                 <Loader />
             </Div>
         </Div>
@@ -40,5 +40,5 @@ export function GroupLoader() {
 }
 
 function GroupImgLoader() {
-    return <CSSXLoader imgLoader w="auto" h="auto" />
+    return <LoaderX css:imgLoader w="auto" h="auto" />
 }

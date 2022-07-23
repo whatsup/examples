@@ -36,18 +36,18 @@ export function* Todo(this: Context, props: TodoProps) {
         const { name, done } = todo
 
         yield (
-            <Div container key={id}>
-                <Button status done={done} onClick={handleDoneToggle}>
+            <Div css:container key={id}>
+                <Button css:status css:done={done} onClick={handleDoneToggle}>
                     <img src={done ? CheckboxOnIcon : CheckboxOffIcon} />
                 </Button>
                 {edit() ? (
                     <NameEditor />
                 ) : (
-                    <Div todoName done={done} onDblClick={handleEdit}>
+                    <Div css:todoName css:done={done} onDblClick={handleEdit}>
                         {name}
                     </Div>
                 )}
-                <Button remove onClick={handleRemove}>
+                <Button css:remove onClick={handleRemove}>
                     <img src={RemoveIcon} />
                 </Button>
             </Div>
@@ -84,7 +84,7 @@ function* NameEditor(this: Context) {
         while (true) {
             yield (
                 <Input
-                    editName
+                    css:editName
                     ref={ref}
                     value={value()}
                     onMount={(e) => (e as HTMLInputElement).focus()}

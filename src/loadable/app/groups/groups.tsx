@@ -10,7 +10,7 @@ export function* Groups(this: Context) {
 
     while (true) {
         yield (
-            <Div container>
+            <Div css:container>
                 {ids.value!.map((id) => (
                     <Group id={id} />
                 ))}
@@ -21,7 +21,7 @@ export function* Groups(this: Context) {
 
 function GroupsLoader() {
     return (
-        <Div container>
+        <Div css:container>
             <GroupLoader />
             <GroupLoader />
             <GroupLoader />

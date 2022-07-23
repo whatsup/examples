@@ -4,7 +4,7 @@ import { Loader } from 'loadable/loader'
 import { Api } from 'loadable/api'
 import { cssx } from 'whatsup/cssx'
 
-const CSSXLoader = cssx(Loader, styles)
+const LoaderX = cssx(Loader, styles)
 
 interface FriendProps {
     id: number
@@ -20,10 +20,10 @@ export function* Friend(this: Context, props: FriendProps) {
 
     while (true) {
         yield (
-            <Div container>
-                <Img avatar src={avatar} />
-                <Div name>{name}</Div>
-                <Div job>{job}</Div>
+            <Div css:container>
+                <Img css:avatar src={avatar} />
+                <Div css:name>{name}</Div>
+                <Div css:job>{job}</Div>
             </Div>
         )
     }
@@ -31,12 +31,12 @@ export function* Friend(this: Context, props: FriendProps) {
 
 export function FriendLoader() {
     return (
-        <Div container>
+        <Div css:container>
             <FriendAvatarLoader />
-            <Div name>
+            <Div css:name>
                 <Loader h={16} />
             </Div>
-            <Div job>
+            <Div css:job>
                 <Loader h={10} w="40%" />
             </Div>
         </Div>
@@ -44,5 +44,5 @@ export function FriendLoader() {
 }
 
 function FriendAvatarLoader() {
-    return <CSSXLoader avatarLoader r="50%" w="auto" h="auto" />
+    return <LoaderX css:avatarLoader r="50%" w="auto" h="auto" />
 }

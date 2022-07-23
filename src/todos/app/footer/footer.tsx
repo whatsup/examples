@@ -13,27 +13,31 @@ export function* Footer(this: Context) {
         const handleClearCompleted = () => store.removeCompleted()
 
         yield (
-            <Div container>
-                <Div flex>
-                    <Div activeCount visible={!!activeCount}>
+            <Div css:container>
+                <Div css:flex>
+                    <Div css:activeCount css:visible={!!activeCount}>
                         {activeCount} items left
                     </Div>
-                    <Div filters>
-                        <Div filter active={filter() === Filter.All} onClick={() => filter(Filter.All)}>
+                    <Div css:filters>
+                        <Div css:filter css:active={filter() === Filter.All} onClick={() => filter(Filter.All)}>
                             All
                         </Div>
-                        <Div filter active={filter() === Filter.Active} onClick={() => filter(Filter.Active)}>
+                        <Div css:filter css:active={filter() === Filter.Active} onClick={() => filter(Filter.Active)}>
                             Active
                         </Div>
-                        <Div filter active={filter() === Filter.Completed} onClick={() => filter(Filter.Completed)}>
+                        <Div
+                            css:filter
+                            css:active={filter() === Filter.Completed}
+                            onClick={() => filter(Filter.Completed)}
+                        >
                             Completed
                         </Div>
                     </Div>
-                    <Div clear onClick={handleClearCompleted} visible={hasCompleted}>
+                    <Div css:clear onClick={handleClearCompleted} css:visible={hasCompleted}>
                         Clear completed
                     </Div>
                 </Div>
-                <Div help>Double click to edit a todo</Div>
+                <Div css:help>Double click to edit a todo</Div>
             </Div>
         )
     }
