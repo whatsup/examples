@@ -7,6 +7,7 @@ import { render } from 'whatsup/jsx'
 import { App as Todos } from './todos'
 import { App as Sierpinski } from './sierpinski'
 import { App as Loadable } from './loadable'
+import { App as ThemeToggle } from './theme_toggle'
 
 const RouteLinkX = cssx(RouteLink, styles)
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="/todos" component={Todos} />
             <Route path="/sierpinski" component={Sierpinski} />
             <Route path="/loadable" component={Loadable} />
+            <Route path="/theme-toggle" component={ThemeToggle} />
             <Div css:default>
                 <Div css:header>Whatsup examples</Div>
                 <Div css:flex>
@@ -27,6 +29,9 @@ function App() {
                     </RouteLinkX>
                     <RouteLinkX css:button css:green to="/sierpinski">
                         Sierpinski
+                    </RouteLinkX>
+                    <RouteLinkX css:button css:teal to="/theme-toggle">
+                        Theme Toggle
                     </RouteLinkX>
                 </Div>
             </Div>
