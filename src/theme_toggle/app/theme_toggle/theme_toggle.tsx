@@ -5,7 +5,7 @@ interface ThemeToggleProps {
     onChange: (v: 'dark' | 'light') => void
 }
 
-export function* ThemeToggle(props: ThemeToggleProps) {
+export function ThemeToggle(props: ThemeToggleProps) {
     const { value, onChange } = props
     const isDark = value === 'dark'
     const isLight = value === 'light'
