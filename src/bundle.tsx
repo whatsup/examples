@@ -8,6 +8,7 @@ import { App as Todos } from './todos'
 import { App as Sierpinski } from './sierpinski'
 import { App as Loadable } from './loadable'
 import { App as ThemeToggle } from './theme_toggle'
+import { App as ColorBox } from './color_box'
 
 const RouteLinkX = cssx(RouteLink, styles)
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/sierpinski" component={Sierpinski} />
             <Route path="/loadable" component={Loadable} />
             <Route path="/theme-toggle" component={ThemeToggle} />
+            <Route path="/color-box" component={ColorBox} />
             <Div css:default>
                 <Div css:header>Whatsup examples</Div>
                 <Div css:flex>
