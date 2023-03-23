@@ -10,6 +10,8 @@ import { App as Loadable } from './loadable'
 import { App as ThemeToggle } from './theme_toggle'
 import { App as ColorBox } from './color_box'
 
+import { observable, computed, autorun } from './atom'
+
 const RouteLinkX = cssx(RouteLink, styles)
 
 function App() {
@@ -42,3 +44,14 @@ function App() {
 }
 
 render(<App />)
+
+const nam = observable('John')
+const age = observable(32)
+const user = computed(() => `User: ${nam()} - ${age()}`)
+
+autorun(() => console.log(user()))
+autorun(() => console.log('One', age()))
+//autorun(() => console.log('Two', age()))
+
+window.nam = nam
+window.age = age
