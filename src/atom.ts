@@ -19,8 +19,10 @@ class Atom<T = any> {
     readonly reducer: () => T
 
     //node?: Node
-    sources?: Node
-    targets?: Node
+    sourcesHead?: Node
+    sourcesTail?: Node
+    targetsHead?: Node
+    targetsTail?: Node
 
     private cache?: Cache<T>
     private cacheType?: CacheType
@@ -31,7 +33,7 @@ class Atom<T = any> {
     }
 
     get() {
-        if (this.establishRelations() || this.targets) {
+        if (this.establishRelations()) {
             if (this.cacheState !== CacheState.Actual) {
                 this.rebuild()
             }
@@ -73,10 +75,10 @@ class Atom<T = any> {
         return this.cacheState === state
     }
 
-    rebuild() {
+    rebuild(node?: Node) {
         check: if (this.isCacheState(CacheState.Check)) {
-            for (let node = this.sources; node; node = node.prevSource) {
-                if (node.source.rebuild()) {
+            for (let node = this.sourcesHead; node; node = node.nextSource) {
+                if (node.source.rebuild(node)) {
                     break check
                 }
             }
@@ -102,7 +104,7 @@ class Atom<T = any> {
                 this.cache = newCache
                 this.cacheType = newCacheType
 
-                for (let node = this.targets; node; node = node.nextTarget) {
+                for (let node = this.targetsHead; node; node = node.nextTarget) {
                     node.target.setCacheState(CacheState.Dirty)
                 }
 
@@ -125,23 +127,31 @@ class Atom<T = any> {
         const node = {
             source: this,
             target: evalContext,
-            prevSource: evalContext.sources,
+            prevSource: evalContext.sourcesTail,
             nextSource: undefined,
-            prevTarget: this.targets,
+            prevTarget: this.targetsTail,
             nextTarget: undefined,
         }
 
-        if (evalContext.sources !== undefined) {
-            evalContext.sources.nextSource = node
+        if (evalContext.sourcesTail) {
+            evalContext.sourcesTail.nextSource = node
         }
 
-        evalContext.sources = node
+        evalContext.sourcesTail = node
 
-        if (this.targets !== undefined) {
-            this.targets.nextTarget = node
+        if (!evalContext.sourcesHead) {
+            evalContext.sourcesHead = node
         }
 
-        this.targets = node
+        if (this.targetsTail) {
+            this.targetsTail.nextTarget = node
+        }
+
+        this.targetsTail = node
+
+        if (!this.targetsHead) {
+            this.targetsHead = node
+        }
 
         return true
     }
@@ -232,12 +242,12 @@ class Process {
     private findRoots(atom: Atom, state: CacheState) {
         atom.setCacheState(state)
 
-        if (!atom.targets) {
+        if (!atom.targetsHead) {
             this.roots.add(atom)
             return
         }
 
-        for (let node: Node | undefined = atom.targets; node; node = node.prevTarget) {
+        for (let node: Node | undefined = atom.targetsHead; node; node = node.nextTarget) {
             if (node.target.isCacheState(CacheState.Actual)) {
                 this.findRoots(node.target, CacheState.Check)
             }
@@ -309,7 +319,7 @@ export const observable = <T>(value: T): any => {
         if (args.length === 1) {
             value = args[0]
 
-            if (atom.targets) {
+            if (atom.targetsHead) {
                 build((p) => p.rebuild(atom))
             }
 
